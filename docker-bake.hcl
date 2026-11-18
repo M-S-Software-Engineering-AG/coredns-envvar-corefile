@@ -11,16 +11,16 @@ variable "GIT_SHA" {
 }
 
 group "default" {
-  targets = ["coredns-envvar-corefile", "coredns-envvar-corefile-debug"]
+  targets = ["corefile-gen", "corefile-gen-debug"]
 }
 
-target "coredns-envvar-corefile" {
+target "corefile-gen" {
   context    = "."
   dockerfile = "Dockerfile"
   tags       = [
-    "${REGISTRY}/coredns-envvar-corefile:${VERSION}",
-    "${REGISTRY}/coredns-envvar-corefile:${GIT_SHA}",
-    "${REGISTRY}/coredns-envvar-corefile:latest",
+    "${REGISTRY}/corefile-gen:${VERSION}",
+    "${REGISTRY}/corefile-gen:${GIT_SHA}",
+    "${REGISTRY}/corefile-gen:latest",
   ]
   platforms  = [
     "linux/amd64",
@@ -29,14 +29,14 @@ target "coredns-envvar-corefile" {
   ]
 }
 
-target "coredns-envvar-corefile-debug" {
-  inherits = ["coredns-envvar-corefile"]
+target "corefile-gen-debug" {
+  inherits = ["corefile-gen"]
   args     = {
     BASE_IMAGE = "gcr.io/distroless/static-debian13:debug-nonroot"
   }
   tags     = [
-    "${REGISTRY}/coredns-envvar-corefile:${VERSION}-debug",
-    "${REGISTRY}/coredns-envvar-corefile:${GIT_SHA}-debug",
-    "${REGISTRY}/coredns-envvar-corefile:latest-debug",
+    "${REGISTRY}/corefile-gen:${VERSION}-debug",
+    "${REGISTRY}/corefile-gen:${GIT_SHA}-debug",
+    "${REGISTRY}/corefile-gen:latest-debug",
   ]
 }

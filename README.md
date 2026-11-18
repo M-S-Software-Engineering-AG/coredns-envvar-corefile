@@ -1,4 +1,4 @@
-# coredns-envvar-corefile
+# corefile-gen
 
 Generates a CoreDNS [Corefile](https://coredns.io/manual/toc/#configuration)
 from environment variables and prints it to stdout.

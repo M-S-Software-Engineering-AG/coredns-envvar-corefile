@@ -22,7 +22,7 @@ jobs:
           for arch in amd64 arm64 arm 386 ppc64le s390x; do
             GOOS=linux GOARCH=$arch CGO_ENABLED=0 \
               go build -trimpath -ldflags='-s -w' \
-              -o "dist/coredns-envvar-corefile-linux-$arch" .
+              -o "dist/corefile-gen-linux-$arch" .
           done
       # ponytail: scans the binaries, not the image — distroless static carries no packages worth scanning.
       - name: Trivy scan
