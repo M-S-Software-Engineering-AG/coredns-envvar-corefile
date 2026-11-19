@@ -1,0 +1,12 @@
+name: Auto tag
+
+on:
+  push:
+    branches: ['release/**']
+
+permissions: {}
+
+jobs:
+  tag:
+    uses: M-S-Software-Engineering-AG/ci-workflows/.github/workflows/go-auto-tag.yml@main
+    secrets: inherit
